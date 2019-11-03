@@ -15,7 +15,8 @@ public class DbContextHolder {
         contextHolderDbType.set(dbType);
     }
 
-    public static void setDataSource(String dbAlias) throws IllegalAccessException, NoSuchFieldException {
+
+    public static void setDataSource(String dbAlias){
         if(!StringUtils.isEmpty(dbAlias) && !"LOCAL".equals(dbAlias)) {
             String dbType = "mysql";
             contextHolderAlias.set(dbAlias);
@@ -25,20 +26,19 @@ public class DbContextHolder {
         }
     }
 
-    public static void setDefaultDataSource() {
+    private static void setDefaultDataSource() {
         String dbType = "mysql";
         contextHolderAlias.set("dataSource_Default");
         contextHolderDbType.set(dbType);
     }
 
     public static String getDataSource() {
-        String str = (String)contextHolderAlias.get();
-        return str;
+        return contextHolderAlias.get();
     }
 
     public static String getDbType() {
         String dbType = "mysql";
-        String str = (String)contextHolderDbType.get();
+        String str = contextHolderDbType.get();
         return StringUtils.isEmpty(str)?dbType:str;
     }
 
