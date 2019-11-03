@@ -20,7 +20,7 @@ public class DbUtil {
     public static List<GridHeader> getGridHeaders(String sql)
     {
 
-        sql = "select  * from  pro_pro_infor order by project_name desc";
+       // sql = "select  * from  pro_pro_infor order by project_name desc";
         JdbcTemplate jdbcTemplate = AppBeanUtil.getBean(JdbcTemplate.class);
         ITableMeta iTableMeta = (ITableMeta)AppBeanUtil.getBean(MySQLTableMeta.class);
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql);
