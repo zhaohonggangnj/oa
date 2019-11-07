@@ -8,7 +8,6 @@ import com.piaomiao.oa.database.model.DefaultTable;
 import com.piaomiao.oa.util.BeanUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

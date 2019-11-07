@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -27,8 +28,16 @@ class OaApplicationTests {
     @Test
     void contextLoads() {
         MySQLTableOperator mySQLTableOperator =  AppBeanUtil.getBean(MySQLTableOperator.class);
-        List<String> strings = mySQLTableOperator.getPKColumns("pro_pro_infor");
-        System.out.println(strings);
+        MySQLTableMeta mySQLTableMeta = AppBeanUtil.getBean(MySQLTableMeta.class);
+  /*     ArrayList a = new ArrayList();
+        a.add("pro_pro_infor");
+        a.add("bpm_solution");
+        Map<String, List<String>>  map  = mySQLTableOperator.getPKColumns(a);
+        System.out.println(mySQLTableOperator.isTableExist("pro_pro_infor"));*/
+         mySQLTableMeta.getTablesByName("pro_pro_infor");
+
+
+
 
 
     }
