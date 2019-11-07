@@ -1,12 +1,14 @@
 package com.piaomiao.oa.factory;
 
 import com.piaomiao.oa.database.api.ITableOperator;
+import com.piaomiao.oa.database.base.BaseTableOperator;
 import com.piaomiao.oa.database.mybatis.dialect.Dialect;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+
 public class TableOperatorFactoryBean implements FactoryBean<ITableOperator> {
-    private ITableOperator tableOperator;
+    private BaseTableOperator tableOperator;
     private String dbType = "mysql";
     private JdbcTemplate jdbcTemplate;
     private Dialect dialect;
@@ -14,7 +16,7 @@ public class TableOperatorFactoryBean implements FactoryBean<ITableOperator> {
     public TableOperatorFactoryBean() {
     }
 
-    public ITableOperator getObject() throws Exception {
+    public BaseTableOperator getObject() throws Exception {
         this.tableOperator = DatabaseFactory.getTableOperator(this.dbType);
         this.tableOperator.setJdbcTemplate(this.jdbcTemplate);
         this.tableOperator.setDialect(this.dialect);

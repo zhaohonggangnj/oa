@@ -5,6 +5,7 @@ import com.piaomiao.oa.database.api.ITableMeta;
 import com.piaomiao.oa.database.api.model.Column;
 import com.piaomiao.oa.database.api.model.Table;
 import com.piaomiao.oa.database.impl.mysql.MySQLTableMeta;
+import com.piaomiao.oa.database.impl.mysql.MySQLTableOperator;
 import com.piaomiao.oa.entity.GridHeader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,6 +26,10 @@ class OaApplicationTests {
 
     @Test
     void contextLoads() {
+        MySQLTableOperator mySQLTableOperator =  AppBeanUtil.getBean(MySQLTableOperator.class);
+        List<String> strings = mySQLTableOperator.getPKColumns("pro_pro_infor");
+        System.out.println(strings);
+
 
     }
 

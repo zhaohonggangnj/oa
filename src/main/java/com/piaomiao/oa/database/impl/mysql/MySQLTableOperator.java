@@ -131,7 +131,7 @@ public class MySQLTableOperator extends BaseTableOperator {
         this.jdbcTemplate.execute(sql);
     }
 
-    public List<String> getPKColumns(String tableName) throws SQLException {
+    public List<String> getPKColumns(String tableName) {
         String schema = this.getSchema();
         String sql = "SELECT k.column_name FROM information_schema.table_constraints t JOIN information_schema.key_column_usage k USING(constraint_name,table_schema,table_name) WHERE t.constraint_type=\'PRIMARY KEY\' AND t.table_schema=\'" + schema + "\' " + "AND t.table_name=\'" + tableName + "\'";
         List columns = this.jdbcTemplate.query(sql, new RowMapper() {

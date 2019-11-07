@@ -4,6 +4,7 @@ package com.piaomiao.oa.factory;
 import com.piaomiao.oa.database.api.ITableOperator;
 import com.piaomiao.oa.database.api.IViewOperator;
 import com.piaomiao.oa.database.base.BaseTableMeta;
+import com.piaomiao.oa.database.base.BaseTableOperator;
 import com.piaomiao.oa.database.impl.mysql.MySQLTableMeta;
 import com.piaomiao.oa.database.impl.mysql.MySQLTableOperator;
 import com.piaomiao.oa.database.impl.mysql.MySQLViewOperator;
@@ -15,10 +16,10 @@ public class DatabaseFactory
 {
     private static String EXCEPTION_MSG = "没有设置合适的数据库类型";
 
-    static ITableOperator getTableOperator(String dbType)
+    static BaseTableOperator getTableOperator(String dbType)
             throws Exception
     {
-        ITableOperator tableOperator = null;
+        BaseTableOperator tableOperator = null;
         if (dbType.equals("oracle")) {
 
         } else if (dbType.equals("mysql")) {
