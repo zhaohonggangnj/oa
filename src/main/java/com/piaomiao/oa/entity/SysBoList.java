@@ -11,8 +11,8 @@ import javax.persistence.Id;
 public class SysBoList  extends BaseEntity{
 
     @Id
-    @Column
-    private Integer id;
+    @Column(name = "ID_")
+    private String id;
 
 
     @Column(
