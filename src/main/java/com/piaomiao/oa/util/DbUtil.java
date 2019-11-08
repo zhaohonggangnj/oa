@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.jdbc.support.rowset.SqlRowSetMetaData;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +19,8 @@ public class DbUtil {
     public static List<GridHeader> getGridHeaders(String sql)
     {
 
-       // sql = "select  * from  pro_pro_infor order by project_name desc";
         JdbcTemplate jdbcTemplate = AppBeanUtil.getBean(JdbcTemplate.class);
-        ITableMeta iTableMeta = (ITableMeta)AppBeanUtil.getBean(MySQLTableMeta.class);
+        ITableMeta iTableMeta = AppBeanUtil.getBean(MySQLTableMeta.class);
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet(sql);
         ArrayList<GridHeader> headers = new ArrayList<>();
         SqlRowSetMetaData sqlRowSetMetaData = sqlRowSet.getMetaData();

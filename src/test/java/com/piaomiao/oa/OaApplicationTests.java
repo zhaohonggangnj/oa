@@ -27,16 +27,17 @@ class OaApplicationTests {
 
     @Test
     void contextLoads() {
-        MySQLTableOperator mySQLTableOperator =  AppBeanUtil.getBean(MySQLTableOperator.class);
+       // MySQLTableOperator mySQLTableOperator =  AppBeanUtil.getBean(MySQLTableOperator.class);
         MySQLTableMeta mySQLTableMeta = AppBeanUtil.getBean(MySQLTableMeta.class);
   /*     ArrayList a = new ArrayList();
         a.add("pro_pro_infor");
         a.add("bpm_solution");
         Map<String, List<String>>  map  = mySQLTableOperator.getPKColumns(a);
         System.out.println(mySQLTableOperator.isTableExist("pro_pro_infor"));*/
-         mySQLTableMeta.getTablesByName("pro_pro_infor");
-
-
+       // Map<String, String> map = mySQLTableMeta.getTablesByName("pro_pro_infor");
+       // List<Table>  tables = mySQLTableMeta.getTableModelByName("pro_pro_infor");
+        Map<String, String>  map = mySQLTableMeta.getTablesByName("pro_pro_infor");
+        System.out.println(map);
 
 
 
