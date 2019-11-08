@@ -9,6 +9,7 @@ import com.piaomiao.oa.database.impl.mysql.MySQLTableMeta;
 import com.piaomiao.oa.database.impl.mysql.MySQLTableOperator;
 import com.piaomiao.oa.entity.GridHeader;
 import com.piaomiao.oa.entity.SysBoList;
+import com.piaomiao.oa.util.DbUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.jdbc.support.rowset.SqlRowSetMetaData;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import tk.mybatis.spring.annotation.MapperScan;
 
 import javax.annotation.Resource;
 import java.sql.SQLException;
@@ -45,6 +47,8 @@ class OaApplicationTests {
        /* Map<String, String>  map = mySQLTableMeta.getTablesByName("pro_pro_infor");
         System.out.println(map);*/
        SysBoList sysBoList = sysBoListDao.selectByPrimaryKey("2600000004451000");
+       List<GridHeader> headers = DbUtil.getGridHeaders("select * from pro_pro_infor");
+
         System.out.println(sysBoList);
 
 

@@ -46,10 +46,10 @@ public class DbUtil {
         }
         for(int i=1;i<columnCount;++i){
             String columnLabel=sqlRowSetMetaData.getColumnLabel(i);
-            tableName =  sqlRowSetMetaData.getColumnTypeName(i);
+            String  columnTypeName =  sqlRowSetMetaData.getColumnTypeName(i);
             GridHeader gridHeader = new GridHeader();
             gridHeader.setFieldName(columnLabel);
-            gridHeader.setFieldType((tableName));
+            gridHeader.setFieldType((columnTypeName));
             gridHeader.setLength(sqlRowSetMetaData.getColumnDisplaySize(i));
             gridHeader.setPrecision(sqlRowSetMetaData.getPrecision(i));
             Column column =  hashMap.get(columnLabel);
