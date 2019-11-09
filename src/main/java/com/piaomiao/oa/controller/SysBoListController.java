@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/sysBoList/")
@@ -16,11 +17,12 @@ public class SysBoListController {
     SysBoListServiceImpl sysBoListService;
 
     @RequestMapping("/edit2")
-    public String edit2(){
+    public String edit2(Map<String, Object> model){
 
         System.out.println("123");
         SysBoList sysBoList = sysBoListService.getById("2600000004451000");
-        System.out.println(sysBoList);
+        model.put("sysBoList", sysBoList);
+        System.out.println(sysBoList.getIdField());
         return  "sysBoList/sysBoListEdit";
 
     }

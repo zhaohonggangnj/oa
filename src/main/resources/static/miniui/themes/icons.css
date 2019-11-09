@@ -16,6 +16,9 @@
 .icon-close{
 	background:url(icons/cancel.gif) no-repeat;
 }
+
+.icon-prev:before { content: "\e890"; }
+
 .icon-cut{
 	background:url(icons/cut.png) no-repeat;
 }
