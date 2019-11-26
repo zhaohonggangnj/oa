@@ -1,18 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="/js/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <script src="/miniui/miniui.js" type="text/javascript"></script>
-    <link href="/miniui/themes/default/miniui.css" rel="stylesheet" type="text/css">
-    <link href="/miniui/themes/pure/skin.css" rel="stylesheet" type="text/css">
-    <link href="/miniui/themes/icons.css" rel="stylesheet" type="text/css">
-    <#--<link href="/css/Font-Awesome/css/font-awesome.css" rel="stylesheet" type="text/css">-->
-</head>
+<#include "/commons/header.ftl">
 <body>
   <div id="toolbar1" class="mini-toolbar">
       <a class="mini-button" <#--iconCls="icon-prev"-->  plain="true" onclick="onPre">上一步</a>
@@ -132,11 +120,11 @@
                           <li>
                               <a class="mini-button" iconCls="icon-collapse" plain="true" onclick="collapse();">收起</a>
                           </li>
-                <#--          <c:if test="${sysBoList.rowEdit=='YES'}">
+                &lt;#&ndash;          <c:if test="${sysBoList.rowEdit=='YES'}">
                               <li>
                                   <a class="mini-button" iconCls="icon-edit" plain="true" onclick="rowControlConfig">编辑控件配置</a>
                               </li>
-                          </c:if>-->
+                          </c:if>&ndash;&gt;
                           <li>
                               <a class="mini-button" iconCls="icon-edit" plain="true" onclick="cellRenderConfig">字段渲染</a>
                           </li>
@@ -218,18 +206,30 @@
               </div>
               <div title="查询数据" region="south" showSplitIcon="true" showHeader="true" height="280" expanded="false">
                   <div id="sampleDataGrid" class="mini-datagrid" style="width:100%;height:100%;" allowCellEdit="true"
-                       url="${ctxPath}/sys/core/sysBoList/getSampleData.do?id=${param.id}"
+                       url="/sys/core/sysBoList/getSampleData.do
                        allowCellSelect="true" >
                   </div>
               </div>
           </div>
 
       </div>
-
-
-
-
   </div>
+      <#--<textarea id="headerColumns" style="display:none">${headerColumns}</textarea>-->
+      <textarea id="fieldColumns" style="display:none">${fieldColumns}</textarea>
+     <#-- <textarea id="searchJson" style="display:none">${sysBoList.searchJson}</textarea>-->
+<script type="text/javascript">
+    mini.parse();
+    let fieldDatas = null;
+    let curField = null;
+    $(function () {
+      let fieldColumns = $('#fieldColumns').val();
+        fieldDatas=mini.decode(fieldColumns);
 
+    })
+
+
+
+
+</script>
 </body>
 </html>

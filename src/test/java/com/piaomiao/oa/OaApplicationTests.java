@@ -1,5 +1,7 @@
 package com.piaomiao.oa;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.piaomiao.oa.bean.AppBeanUtil;
 import com.piaomiao.oa.dao.SysBoListDao;
 import com.piaomiao.oa.database.api.ITableMeta;
@@ -17,6 +19,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.jdbc.support.rowset.SqlRowSetMetaData;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.util.StringUtils;
 import tk.mybatis.spring.annotation.MapperScan;
 
 import javax.annotation.Resource;
@@ -47,14 +50,29 @@ class OaApplicationTests {
        /* Map<String, String>  map = mySQLTableMeta.getTablesByName("pro_pro_infor");
         System.out.println(map);*/
        SysBoList sysBoList = sysBoListDao.selectByPrimaryKey("2600000004451000");
+
        List<GridHeader> headers = DbUtil.getGridHeaders("select * from pro_pro_infor");
+       Map<String, JSONObject> jsonFieldMap = this.getFieldJsonMap(sysBoList.getFieldsJson());
+      /* for (GridHeader headerCol)*/
 
-        System.out.println(sysBoList);
 
-
+        System.out.println(jsonFieldMap);
     }
 
-
+    private Map<String, JSONObject> getFieldJsonMap(String fieldJson) {
+        HashMap<String, JSONObject> map = new HashMap<>();
+        if(StringUtils.isEmpty(fieldJson)) {
+            return map;
+        } else {
+            JSONArray jsonArray = JSONArray.parseArray(fieldJson);
+            for(int i = 0; i < jsonArray.size(); ++i) {
+                JSONObject jsonObj = jsonArray.getJSONObject(i);
+                String field = jsonObj.getString("field");
+                map.put(field, jsonObj);
+            }
+            return map;
+        }
+    }
 
 
 
