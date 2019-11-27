@@ -34,7 +34,6 @@ public class DbUtil {
             int indexOfTable = tableNameStart.indexOf(" ");
             if(indexOfTable>0){
                 tableName = tableNameStart.substring(0,indexOfTable).trim();
-                System.out.println(tableName);
             }else {
                 tableName = tableNameStart;
             }

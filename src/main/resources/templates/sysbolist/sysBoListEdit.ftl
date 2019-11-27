@@ -120,36 +120,18 @@
                           <li>
                               <a class="mini-button" iconCls="icon-collapse" plain="true" onclick="collapse();">收起</a>
                           </li>
-                &lt;#&ndash;          <c:if test="${sysBoList.rowEdit=='YES'}">
+                        <#if sysBoList.rowEdit == "YES">
                               <li>
                                   <a class="mini-button" iconCls="icon-edit" plain="true" onclick="rowControlConfig">编辑控件配置</a>
                               </li>
-                          </c:if>&ndash;&gt;
+                          </#if>
                           <li>
                               <a class="mini-button" iconCls="icon-edit" plain="true" onclick="cellRenderConfig">字段渲染</a>
                           </li>
                           <li class="clearfix"></li>
                       </ul>
                   </div>
-                  <div class="mini-fit">
-                      <div
-                              id="headerGrid"
-                              class="mini-treegrid"
-                              style="width:100%;height:100%"
-                              showPager="false"
-                              treeColumn="header"
-                              idField="_uid"
-                              parentField="_pid"
-                              multiSelect="true"
-                              showTreeIcon="true"
-                              allowCellEdit="true"
-                              allowCellValid="true"
-                              oncellvalidation="onHeaderGridCellValidation"
-                              resultAsTree="false"
-                              expandOnLoad="true"
-                              allowAlternating="true"
-                              allowCellSelect="true"
-                      >
+                      <div id="headerGrid" class="mini-treegrid" multiSelect="true"  expandOnLoad="true"  allowAlternating="true" allowCellSelect="true" allowCellValid="true" allowCellEdit="true">
                           <div property="columns" class="border-right">
                               <div type="indexcolumn" width="20">序号</div>
                               <div type="checkcolumn" width="20"></div>
@@ -161,7 +143,7 @@
                                          textField="header" valueField="field" required="true" onvaluechanged="changeColumnFieldName"
                                          style="width:100%;" data="fieldDatas" />
                               </div>
-                              <div type="checkboxcolumn" field="allowSort" trueValue="true" falseValue="false" width="60" headerAlign="center">可排序</div>
+                            <#--  <div type="checkboxcolumn" field="allowSort" trueValue="true" falseValue="false" width="60" headerAlign="center">可排序</div>-->
 
                               <div field="width" width="80" headerAlign="center">宽度
                                   <input property="editor" class="mini-spinner"  style="width:100%;" minValue="50" maxValue="1200"/>
@@ -202,7 +184,6 @@
                               </div>
                           </div>
                       </div>
-                  </div>
               </div>
               <div title="查询数据" region="south" showSplitIcon="true" showHeader="true" height="280" expanded="false">
                   <div id="sampleDataGrid" class="mini-datagrid" style="width:100%;height:100%;" allowCellEdit="true"
@@ -214,17 +195,19 @@
 
       </div>
   </div>
-      <#--<textarea id="headerColumns" style="display:none">${headerColumns}</textarea>-->
-      <textarea id="fieldColumns" style="display:none">${fieldColumns}</textarea>
+      <textarea id="headerColumns" style="display:none">${headerColumns}</textarea>
+      <textarea id="fieldColumns"  style="display:none">${fieldColumns}</textarea>
      <#-- <textarea id="searchJson" style="display:none">${sysBoList.searchJson}</textarea>-->
 <script type="text/javascript">
     mini.parse();
-    let fieldDatas = null;
-    let curField = null;
+    var headerGrid = mini.get('headerGrid');
+    var fieldDatas = null;
+    var curField = null;
     $(function () {
-      let fieldColumns = $('#fieldColumns').val();
+      var headerColumns=$('#headerColumns').val();
+      var fieldColumns = $('#fieldColumns').val();
         fieldDatas=mini.decode(fieldColumns);
-
+        headerGrid.setData(mini.decode(headerColumns));
     })
 
 

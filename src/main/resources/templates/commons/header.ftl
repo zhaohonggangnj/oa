@@ -9,5 +9,6 @@
     <link href="/miniui/themes/default/miniui.css" rel="stylesheet" type="text/css">
     <link href="/miniui/themes/pure/skin.css" rel="stylesheet" type="text/css">
     <link href="/miniui/themes/icons.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="#"/>
     <#--<link href="/css/Font-Awesome/css/font-awesome.css" rel="stylesheet" type="text/css">-->
 </head>

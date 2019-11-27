@@ -11,6 +11,7 @@ import com.piaomiao.oa.util.DbUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -55,12 +56,19 @@ public class SysBoListController {
             fieldObj.put("width", 100);
             fieldCols.add(fieldObj);
         }
-
+        model.put("headerColumns",sysBoList.getColsJson());
         model.put("fieldColumns", JSON.toJSONString(fieldCols));
-        model.put("sysBoList", JSON.toJSONString(sysBoList));
+        model.put("sysBoList", sysBoList);
         return  "sysBoList/sysBoListEdit";
 
     }
+    @ResponseBody
+    @RequestMapping("/aaa")
+    public String aaa(){
+        SysBoList sysBoList = sysBoListService.getById("2600000004451000");
+        return sysBoList.getColsJson();
+    }
+
 
         private Map<String, JSONObject> getFieldJsonMap(String fieldJson) {
             HashMap<String, JSONObject> map = new HashMap<>();
