@@ -40,7 +40,7 @@
                               />
                           </li>
                           <li>
-                              树节点字段${sysBoList.idField}
+                              树节点字段
                               <input
                                       id="textField"
                                       name="textField"
@@ -92,7 +92,7 @@
                           </li>
                           <li class="clearfix"></li>
                       </ul>
-                      <ul>
+                      <ul class="toolBtnBox">
                           <li>
                               <a class="mini-button" iconCls="icon-save" plain="true" onclick="reloadColumns">重新合并表头</a>
                           </li>
@@ -187,8 +187,7 @@
               </div>
               <div title="查询数据" region="south" showSplitIcon="true" showHeader="true" height="280" expanded="false">
                   <div id="sampleDataGrid" class="mini-datagrid" style="width:100%;height:100%;" allowCellEdit="true"
-                       url="/sys/core/sysBoList/getSampleData.do
-                       allowCellSelect="true" >
+                       url="/sys/core/sysBoList/getSampleData.doallowCellSelect=true" >
                   </div>
               </div>
           </div>
@@ -206,8 +205,11 @@
     $(function () {
       var headerColumns=$('#headerColumns').val();
       var fieldColumns = $('#fieldColumns').val();
+
+      console.log($('#fieldColumns').val());
         fieldDatas=mini.decode(fieldColumns);
         headerGrid.setData(mini.decode(headerColumns));
+        mini.get('textField').setData(fieldDatas);
     })
 
 

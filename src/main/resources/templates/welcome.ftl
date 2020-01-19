@@ -52,7 +52,7 @@
 
 
 <script type="text/javascript">
-      mini.parse();
+     // mini.parse();
 /*      var headerGrid = mini.get('headerGrid');
       $.post("/sysBoList/aaa",{},function (result) {
             headerGrid.setData(mini.decode(result));
